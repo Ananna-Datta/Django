@@ -29,6 +29,7 @@ SECRET_KEY = 'django-insecure-a)0z3bvdio*7a%-m1bmvpmw*7stmlv7j9(hjmxi(232g%f6iq9
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ['https://django-giyd.onrender.com','https://*.127.0.0.1']
 
 
 # Application definition
