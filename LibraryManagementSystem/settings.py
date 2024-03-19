@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 from pathlib import Path
-import dj_database_url
+# import dj_database_url
 import environ
 env = environ.Env()
 environ.Env.read_env()
@@ -23,7 +23,7 @@ SECRET_KEY = env("SECRET_KEY")
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-a)0z3bvdio*7a%-m1bmvpmw*7stmlv7j9(hjmxi(232g%f6iq9'
+SECRET_KEY = 'django-insecure-a)0z3bvdio*7a%-m1bmvpmw*7stmlv7j9(hjmxi(232g%f6iq9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -93,23 +93,23 @@ WSGI_APPLICATION = 'LibraryManagementSystem.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': env("DB_NAME"),
-#         'USER': env("DB_USER"),
-#         'PASSWORD': env("DB_PASSWORD"),
-#         'HOST': env("DB_HOST"),
-#         'PORT': env("DB_PORT"),
-#     }
-# }
-# Replace the SQLite DATABASES configuration with PostgreSQL:
 DATABASES = {
-    'default': dj_database_url.config(
-        # Replace this value with your local database's connection string.
-        default='postgres://library_management_ru67_user:1VzKf1Ox8fIxn9rtfsd6vkVpzzzUBSET@dpg-cns7bpf109ks73ccgdhg-a.oregon-postgres.render.com/library_management_ru67',
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': env("DB_NAME"),
+        'USER': env("DB_USER"),
+        'PASSWORD': env("DB_PASSWORD"),
+        'HOST': env("DB_HOST"),
+        'PORT': env("DB_PORT"),
+    }
 }
+# Replace the SQLite DATABASES configuration with PostgreSQL:
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         # Replace this value with your local database's connection string.
+#         default='postgres://library_management_ru67_user:1VzKf1Ox8fIxn9rtfsd6vkVpzzzUBSET@dpg-cns7bpf109ks73ccgdhg-a.oregon-postgres.render.com/library_management_ru67',
+#     )
+# }
 
 
 # Password validation
