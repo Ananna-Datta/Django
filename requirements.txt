@@ -1,5 +1,6 @@
 asgiref
 crispy-bootstrap5
+dj-database-url
 Django
 django-crispy-forms
 django-environ
@@ -9,6 +10,7 @@ MouseInfo
 mss
 Pillow
 psycopg2
+psycopg2-binary
 PyAutoGUI
 PyGetWindow
 PyMsgBox
@@ -18,4 +20,5 @@ pyscreenshot
 PyScreeze
 pytweening
 sqlparse
+typing_extensions
 tzdata
