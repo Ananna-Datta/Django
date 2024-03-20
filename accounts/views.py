@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import login,logout
 from django.views.generic import FormView,View,UpdateView
 from django.contrib.auth.views import LoginView
-from accounts.forms import UserRegistrationForm ,UserUpdateForm
+from accounts.forms import UserRegistrationForm ,UserUpdateForm,SignupForm
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
 from transactions.views import send_email
@@ -18,18 +18,20 @@ class UserRegisterView(FormView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        messages.success(self.request, 'user created successful.')
+        messages.success(self.request, 'User created successful.')
         return super().form_valid(form)
     
     def form_invalid(self, form):
-        messages.error(self.request, 'something went wrong try again later.')
+        messages.error(self.request, 'Something went wrong try again later.')
         return super().form_invalid(form)
 
-class UserLoginView(LoginView):
+class UserLoginView(FormView):
     template_name = 'accounts/login.html'
+    form_class = SignupForm
+    # success_url = reverse_lazy('homepage')
 
     def get_success_url(self):
-        messages.success(self.request, 'user logged in successful')
+        messages.success(self.request, 'User logged in successful')
         return reverse_lazy('homepage')
 
 class UserLogoutView(View):

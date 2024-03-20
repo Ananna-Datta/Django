@@ -65,6 +65,41 @@ class UserRegistrationForm(UserCreationForm):
                 )
             })
 
+
+class SignupForm(UserCreationForm):
+    # account_type = forms.ChoiceField(choices=UserAccount.ACCOUNT_TYPE_CHOICES)
+
+    class Meta:
+        model = User
+        fields = ['username', 'password1', 'password2']
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        if commit:
+            user.save()
+            # account_type = self.cleaned_data.get('account_type')
+
+            UserAccount.objects.create(
+                user=user,
+                # account_type=account_type,
+            )
+        return user
+
+    def init(self, *args, **kwargs):
+        super().init(*args, **kwargs)
+        
+        for field in self.fields:
+            self.fields[field].widget.attrs.update({     
+                'class' : (
+                    'appearance-none block w-full bg-gray-200 '
+                    'text-gray-700 border border-gray-200 rounded '
+                    'py-3 px-4 leading-tight focus:outline-none '
+                    'focus:bg-white focus:border-gray-500'
+                ) 
+            })
+
+
+
 class UserUpdateForm(forms.ModelForm):
     age = forms.IntegerField()
     gender = forms.ChoiceField(choices = GENDER_TYPE)
