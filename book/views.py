@@ -52,7 +52,7 @@ class BookBorrowView(LoginRequiredMixin,View):
                 user = request.user.account,
                 created_on=timezone.now(),
             )
-            send_email(user,book.borrowed_price, 'borrow', 'Book Borrow Message','transactions/email_template.html')
+            send_email(user,book.price, 'borrow', 'Book Borrow Message','transactions/email_template.html')
             return redirect('borrow_book_lists') 
         else:
             messages.error(request, 'Insufficient balance to borrow the book')
@@ -75,7 +75,7 @@ class BookReturnView(LoginRequiredMixin, View):
         user.account.balance += book.book.price
         messages.success(request, 'book return successful')
         user.account.save(update_fields=['balance'])
-        send_email(user,book.book.borrowed_price, 'return_book', 'Book Return Message','transactions/email_template.html')
+        send_email(user,book.book.price, 'return_book', 'Book Return Message','transactions/email_template.html')
         book.delete()
         return redirect('borrow_book_lists') 
     

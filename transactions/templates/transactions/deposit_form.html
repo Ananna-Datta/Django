@@ -10,7 +10,7 @@
         {% endif %}
         
         <h1 class="font-bold text-3xl text-center pb-5 pt-10 px-5">{{ title }}</h1>
-        <form method="post" class="px-8 pt-6 pb-8 mb-4">
+        <form method="post" class="px-8 pt-6 pb-8 mb-4 text-center">
             {% csrf_token %}
             {% if form.account_no.errors %} 
             {% for error in form.account_no.errors %}
@@ -26,8 +26,8 @@
             <p class="text-red-600 text-sm italic pb-2">{{ error }}</p>
             {% endfor %} {% endif %}
             <div class="flex w-full justify-center">
-                <button class="bg-blue-900 text-white hover:text-blue-900 hover:bg-white border border-blue-900 font-bold px-4 py-2 rounded-lg" type="submit">
-                Submit
+                <button class="bg-primary text-white"style="border:none;" type="submit">
+                <h4>Submit</h4>
             </button>
             </div>
         </form>

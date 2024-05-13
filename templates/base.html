@@ -42,26 +42,26 @@
               {% if request.user.is_authenticated %}
               <li class="nav-item mx-3">
                 <a
-                class="text-teal-700 my-auto font-black px-5">
+                class="text-teal-700 my-auto font-black px-5 text-white">
                 Welcome, {{ request.user.first_name }} (balance : ${{request.user.account.balance}})</a
                 >
               </li>
               <li class="nav-item mx-3">
                 <a
-                  class="nav-link btn btn-warning text-dark"
+                  class="nav-link btn btn-warning text-dark text-white"
                   href="{% url 'deposit' %}"
                   >Deposit</a
                 >
               </li>
               <li>
-                <a class="nav-link btn btn-warning text-dark"
+                <a class="nav-link btn btn-warning text-dark text-white"
                   href="{% url 'borrow_book_lists' %}"
                   >Borowed Books</a
                 >
               </li>
               <li class="nav-item mx-3">
                 <a
-                  class="nav-link btn btn-warning text-dark"
+                  class="nav-link btn btn-warning text-dark text-white"
                   href="{% url 'profile' %}"
                   >Profile</a
                 >
@@ -69,7 +69,7 @@
               
               <li class="nav-item mx-3">
                 <a
-                  class="nav-link btn btn-danger text-dark"
+                  class="nav-link btn btn-danger text-dark text-white"
                   href="{% url 'logout' %}"
                   >Logout</a
                 >
@@ -77,14 +77,14 @@
               {% else %}
               <li class="nav-item mx-3">
                 <a
-                  class="nav-link btn btn-warning text-dark"
+                  class="nav-link btn btn-warning text-dark text-white"
                   href="{% url 'register' %}"
                   >Register</a
                 >
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-link btn btn-primary text-dark"
+                  class="nav-link btn btn-primary text-dark text-white"
                   href="{% url 'login' %}"
                   >Login</a
                 >
